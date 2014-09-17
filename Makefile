@@ -6,7 +6,7 @@ TEST_FILES := test/support/env.js $(shell find test/specs -type f -name "*.js")
 
 # Run Mocha, with standard reporter.
 test:
-	@$(BIN)/mocha -r cylon --colors $(TEST_FILES)
+	@TEST_MODE=true $(BIN)/mocha -r cylon --colors $(TEST_FILES)
 
 # Run Mocha, with more verbose BDD reporter.
 bdd:
