@@ -5,8 +5,10 @@ physical computing using Node.js
 
 This repository contains the Cylon adaptor for the [Intel Edison](http://www.intel.com/content/www/us/en/do-it-yourself/edison.html) and [Intel Galileo](http://www.intel.com/content/www/us/en/do-it-yourself/galileo-maker-quark-board.html) IoT platforms. It uses the MRAA node module (https://github.com/intel-iot-devkit/mraa) created by the [Intel IoT team](https://github.com/intel-iot-devkit) thank you!
 
-For more information about Cylon, check out the repo at
+For more information about Cylon.js, check out the repo at
 https://github.com/hybridgroup/cylon
+
+[![Build Status](https://secure.travis-ci.org/hybridgroup/cylon-intel-iot.png?branch=master)](http://travis-ci.org/hybridgroup/cylon-intel-iot)
 
 ## Getting Started
 
