@@ -1,6 +1,8 @@
 BIN := ./node_modules/.bin
 TEST_FILES := test/support/env.js $(shell find test/specs -type f -name "*.js")
 
+VERSION := $(shell node -e "console.log(require('./package.json').version)")
+
 # Our 'phony' make targets (don't involve any file changes)
 .PHONY: test bdd lint release
 
