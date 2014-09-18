@@ -5,7 +5,7 @@ physical computing using Node.js
 
 This repository contains the Cylon adaptor for the [Intel Edison](http://www.intel.com/content/www/us/en/do-it-yourself/edison.html) and [Intel Galileo](http://www.intel.com/content/www/us/en/do-it-yourself/galileo-maker-quark-board.html) IoT platforms. It uses the MRAA node module (https://github.com/intel-iot-devkit/mraa) created by the [Intel IoT team](https://github.com/intel-iot-devkit) thank you!
 
-This module currently supports the folloing Intel IoT hardware: 
+This module currently supports the following Intel IoT hardware:
 - Intel Galileo Gen 1
 - Intel Galileo Gen 2
 - Intel Edison with the Arduino breakout board
@@ -22,19 +22,44 @@ https://github.com/hybridgroup/cylon
 Everything you need to get started with the Edison is in the Intel Getting Started Guide
 located [here](https://communities.intel.com/docs/DOC-23147). Don't forget to
 configure your Edison's wifi connection and [flash](https://communities.intel.com/docs/DOC-23192)
-your Edison with the latest firmware image! 
+your Edison with the latest firmware image!
 
 Now you're ready to install MRAA and Cylon.
 
 #### Setting up your Intel Galileo
 
-In order to use `cylon-intel-iot` on your Galileo, you need to install the Intel IoT linux boot image onto an sd card. You can download the latest image [here](https://software.intel.com/sites/landingpage/iotdk/board-boot-image.html). 
+In order to use `cylon-intel-iot` on your Galileo, you need to install the Intel IoT linux boot image onto an sd card.
+You can download the latest image [here](https://software.intel.com/sites/landingpage/iotdk/board-boot-image.html).
 
-For Windows hosts you can follow the instruction for flashing your sd card image [here](https://software.intel.com/en-us/node/530353). 
+For Windows hosts you can follow the instruction for flashing your sd card image [here](https://software.intel.com/en-us/node/530353).
 
-For Mac or Linux hosts, it's as easy as extracting the image from the downloaded archive and executing the command 
+###### OS X Users
 
-    $ sudo dd if=iot-devkit-latest-mmcblkp0.direct of=/dev/sdX bs=1M && sudo sync 
+To prepare your SD card for flashing on OS X, you need to find out it's drive name and eject the volume.
+
+To find the name, use the built-in `diskutil` utility:
+
+    $ diskutil list
+    /dev/disk0
+      #:                       TYPE NAME                    SIZE       IDENTIFIER
+      0:      GUID_partition_scheme                        *500.3 GB   disk0
+      1:                        EFI EFI                     209.7 MB   disk0s1
+      2:                  Apple_HFS Macintosh HD            499.4 GB   disk0s2
+      3:                 Apple_Boot Recovery HD             650.0 MB   disk0s3
+    /dev/disk1
+      #:                       TYPE NAME                    SIZE       IDENTIFIER
+      0:     FDisk_partition_scheme                        *15.7 GB    disk1
+      1:             Windows_FAT_32 NO NAME                 15.7 GB    disk1s1
+
+According to this, our SD card is found at `/dev/disk1`.
+
+Before you flash it with the above `dd` command, use `diskutil` to eject the existing volume (`disk1s1`):
+
+    $ diskutil unmount /dev/disk1s1
+
+For Mac or Linux hosts, it's as easy as extracting the image from the downloaded archive and executing the command
+
+    $ sudo dd if=/path/to/iot-devkit-latest-mmcblkp0.direct of=/dev/sdX bs=1M && sudo sync
 
 where `/dev/sdX` is the location of your sd card.
 
@@ -44,18 +69,18 @@ Now you're ready to install MRAA and Cylon.
 
 #### Install MRAA
 After you have flashed your Intel board and connected it to a network,
-you must now install the latest version of the 
+you must now install the latest version of the
 [Intel MRAA library](https://github.com/intel-iot-devkit/mraa). In order to update MRAA
-you simply log into your Intel board, through ssh or the uart serial connection, and follow 
+you simply log into your Intel board, through ssh or the uart serial connection, and follow
 the steps [here](https://github.com/intel-iot-devkit/mraa#installing-on-your-board).
 
 #### Install Cylon
 
-Once you have flashed your Intel board with the latest firmware as well as updated MRAA, 
+Once you have flashed your Intel board with the latest firmware as well as updated MRAA,
 you will now install `cylon-intel-iot`. To do this you must be
 logged into the board, through ssh or the uart serial connection, and execute the
-following command 
-    
+following command
+
     $ npm install -g cylon-intel-iot
 
 Once `cylon-intel-iot` has been installed , you're ready to start programming!
