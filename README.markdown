@@ -19,26 +19,46 @@ https://github.com/hybridgroup/cylon
 
 #### Setting up your Intel Edison
 
-Everything you need to get started with the Edison is in the Intel Getting Started Guide 
-located [here](https://communities.intel.com/docs/DOC-23147). Don't forget to 
-configure your Edison's wifi connection and [flash](https://communities.intel.com/docs/DOC-23192) 
-your Edison with the latest firmware image!
+Everything you need to get started with the Edison is in the Intel Getting Started Guide
+located [here](https://communities.intel.com/docs/DOC-23147). Don't forget to
+configure your Edison's wifi connection and [flash](https://communities.intel.com/docs/DOC-23192)
+your Edison with the latest firmware image! 
 
-After you have flashed your Edison and followed the steps in the Intel Getting Started Guide,
+Now you're ready to install MRAA and Cylon.
+
+#### Setting up your Intel Galileo
+
+In order to use `cylon-intel-iot` on your Galileo, you need to install the Intel IoT linux boot image onto an sd card. You can download the latest image [here](https://software.intel.com/sites/landingpage/iotdk/board-boot-image.html). 
+
+For Windows hosts you can follow the instruction for flashing your sd card image [here](https://software.intel.com/en-us/node/530353). 
+
+For Mac or Linux hosts, it's as easy as extracting the image from the downloaded archive and executing the command 
+
+    $ sudo dd if=iot-devkit-latest-mmcblkp0.direct of=/dev/sdX bs=1M && sudo sync 
+
+where `/dev/sdX` is the location of your sd card.
+
+After the image has been flashed to your sd card, install the sd card into the Galileo, connect it to your local network and power it up!
+
+Now you're ready to install MRAA and Cylon.
+
+#### Install MRAA
+After you have flashed your Intel board and connected it to a network,
 you must now install the latest version of the 
 [Intel MRAA library](https://github.com/intel-iot-devkit/mraa). In order to update MRAA
-you simply log into your Edison, through ssh or the uart serial connection, and follow 
+you simply log into your Intel board, through ssh or the uart serial connection, and follow 
 the steps [here](https://github.com/intel-iot-devkit/mraa#installing-on-your-board).
 
-#### Installing Cylon
+#### Install Cylon
 
-Once you have flashed your Edison with the latest firmware as well as updated MRAA, 
-you will now install `cylon-intel-iot` on the Edison. To do this you must be
+Once you have flashed your Intel board with the latest firmware as well as updated MRAA, 
+you will now install `cylon-intel-iot`. To do this you must be
 logged into the board, through ssh or the uart serial connection, and execute the
-following command `npm install cylon-intel-iot`.
+following command 
+    
+    $ npm install -g cylon-intel-iot
 
-Once `cylon-intel-iot` has been installed on your Edison, you're ready to start
-programming!
+Once `cylon-intel-iot` has been installed , you're ready to start programming!
 
 ## Examples
 
