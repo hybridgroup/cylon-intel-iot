@@ -33,6 +33,12 @@ You can download the latest image [here](https://software.intel.com/sites/landin
 
 For Windows hosts you can follow the instruction for flashing your sd card image [here](https://software.intel.com/en-us/node/530353).
 
+For Mac or Linux hosts, it's as easy as extracting the image from the downloaded archive and executing the command
+
+    $ sudo dd if=/path/to/iot-devkit-latest-mmcblkp0.direct of=/dev/sdX bs=1M && sudo sync
+
+where `/dev/sdX` is the location of your sd card. For help determing the location of your sd card, consult the appropriate guide for your OS below. 
+
 ###### OS X Users
 
 To prepare your SD card for flashing on OS X, you need to find out it's drive name and eject the volume.
@@ -57,11 +63,29 @@ Before you flash it with the above `dd` command, use `diskutil` to eject the exi
 
     $ diskutil unmount /dev/disk1s1
 
-For Mac or Linux hosts, it's as easy as extracting the image from the downloaded archive and executing the command
+###### Linux Users
+To prepare your SD card for flashing on Linux, you need to find the device location of your SD card. An easy way to determin the location is by filtering the `/dev/` directory for new storage devices. Before you plug in your SD card, execute the following `ls` command
 
-    $ sudo dd if=/path/to/iot-devkit-latest-mmcblkp0.direct of=/dev/sdX bs=1M && sudo sync
+    $ ls -l /dev/sd*
+    brw-rw---- 1 root disk 8,  0 Sep 16 21:48 /dev/sda
+    brw-rw---- 1 root disk 8,  1 Sep 16 21:48 /dev/sda1
+    brw-rw---- 1 root disk 8,  2 Sep 16 21:48 /dev/sda2
+    brw-rw---- 1 root disk 8,  5 Sep 16 21:48 /dev/sda5
 
-where `/dev/sdX` is the location of your sd card.
+
+You can see that I only have one storage device `/dev/sda`. Now plug in your SD card and execute the `ls` command again
+
+    $ ls -l /dev/sd*
+    brw-rw---- 1 root disk 8,  0 Sep 16 21:48 /dev/sda
+    brw-rw---- 1 root disk 8,  1 Sep 16 21:48 /dev/sda1
+    brw-rw---- 1 root disk 8,  2 Sep 16 21:48 /dev/sda2
+    brw-rw---- 1 root disk 8,  5 Sep 16 21:48 /dev/sda5
+    brw-rw---- 1 root disk 8, 16 Sep 17 17:46 /dev/sdb
+    brw-rw---- 1 root disk 8, 17 Sep 17 17:46 /dev/sdb1
+    brw-rw---- 1 root disk 8, 18 Sep 17 17:46 /dev/sdb2
+
+
+You can see from this output that I now have a new storage device `/dev/sdb`. That is the location of my SD card, so in this instance the `/dev/sdX` in our `dd` command will be `/dev/sdb`.
 
 After the image has been flashed to your sd card, install the sd card into the Galileo, connect it to your local network and power it up!
 
