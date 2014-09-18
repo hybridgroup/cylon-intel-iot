@@ -12,13 +12,13 @@ test:
 
 # Run Mocha, with more verbose BDD reporter.
 bdd:
-	@$(BIN)/mocha -r cylon --colors -R spec $(TEST_FILES)
+	@TEST_MODE=true $(BIN)/mocha -r cylon --colors -R spec $(TEST_FILES)
 
 # Run JSHint
 lint:
 	@$(BIN)/jshint ./lib
 
-release:                                                                                             
-	@git tag -m "$(VERSION)" v$(VERSION)                                                               
-	@git push --tags                                                                                   
-	@npm publish ./  
+release:
+	@git tag -m "$(VERSION)" v$(VERSION)
+	@git push --tags
+	@npm publish ./
