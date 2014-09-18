@@ -105,7 +105,7 @@ you will now install `cylon-intel-iot`. To do this you must be
 logged into the board, through ssh or the uart serial connection, and execute the
 following command
 
-    $ npm install -g cylon-intel-iot
+    $ npm install cylon-intel-iot
 
 Once `cylon-intel-iot` has been installed , you're ready to start programming!
 
