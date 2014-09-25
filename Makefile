@@ -8,7 +8,7 @@ VERSION := $(shell node -e "console.log(require('./package.json').version)")
 
 # Run Mocha, with standard reporter.
 test:
-	@TEST_MODE=true $(BIN)/mocha -r cylon --colors $(TEST_FILES)
+	@$(BIN)/mocha -r cylon --colors $(TEST_FILES)
 
 # Run Mocha, with more verbose BDD reporter.
 bdd:
@@ -18,7 +18,7 @@ bdd:
 lint:
 	@$(BIN)/jshint ./lib
 
-release:                                                                                             
-	@git tag -m "$(VERSION)" v$(VERSION)                                                               
-	@git push --tags                                                                                   
-	@npm publish ./  
+release:
+	@git tag -m "$(VERSION)" v$(VERSION)
+	@git push --tags
+	@npm publish ./
