@@ -199,12 +199,12 @@ describe("Adaptor", function() {
         adaptor.emit = spy();
 
         adaptor.digitalRead(1, callback);
-        clock.tick(adaptor.interval)
+        clock.tick(adaptor.interval);
       });
 
       afterEach(function() {
         stub(global, 'every');
-      })
+      });
 
       it("reads the value from the pin", function() {
         expect(pin.read).to.be.called;
@@ -215,7 +215,7 @@ describe("Adaptor", function() {
       });
 
       it("triggers the callback with the value", function() {
-        expect(callback).to.be.calledWith(0.5);
+        expect(callback).to.be.calledWith(null, 0.5);
       });
 
       context("if the same value is returned twice", function() {
@@ -340,7 +340,7 @@ describe("Adaptor", function() {
       });
 
       it("triggers the callback with the value", function() {
-        expect(callback).to.be.calledWith(0.5);
+        expect(callback).to.be.calledWith(null, 0.5);
       });
 
       context("if the same value is returned twice", function() {
