@@ -24,6 +24,48 @@ located [here](https://communities.intel.com/docs/DOC-23147). Don't forget to
 configure your Edison's wifi connection and [flash](https://communities.intel.com/docs/DOC-23192)
 your Edison with the latest firmware image!
 
+In order to enable Ethernet over USB on your Edison, follow the appropriate guide for your OS
+
+###### Windows
+- Go to control panel -> network and sharing center -> change adaptor settings
+- When you plug both usb cables into your computer, you should see a new network device show up
+- Right click on the new device and select properties
+- Scroll down to IPv4 and select properties
+- Select "Use the folloing IP address"
+- Set the IP information to:
+	- IP address:           `192.168.2.1`
+	- Subnet mask:          `255.255.255.0`
+	- Default gateway:      `192.168.2.255`
+	- Preferred DNS server: `8.8.8.8`
+- Save the changes 
+- open putty
+- ssh to 192.168.2.15
+- The user is 'root' and the password is what you configured during the getting started guide
+
+###### OS X
+- Install the usb tethering driver http://joshuawise.com/horndis#available_versions
+- Open network preferences
+- Plug your Edison into your computer
+- Find the device `Edison`
+- Configure IPv4: Using DHCP with manual address
+	- `192.168.2.1`
+- Open a terminal
+- $ ssh root@192.168.2.15
+
+###### Linux
+- Plug your Edison into your computer
+- $ sudo ifconfig usb0 192.168.2.1 255.255.255.0
+- $ ssh root@192.168.2.15
+
+The Edison is now able to use it's wifi connection to reach the internet and your local USB to Ethernet connection for local ssh access and programming. If you have problems reaching the internet, you may need to setup the DNS on your Edison.
+
+Execute the following command on the Edison itself
+
+    # cat "nameserver 8.8.8.8 > /etc/resolv.conf"
+
+If you have a valid wifi connection, you should be able to reach out of your network!
+
+
 Now you're ready to install MRAA and Cylon.
 
 #### Setting up your Intel Galileo
@@ -109,21 +151,67 @@ following command
 
 Once `cylon-intel-iot` has been installed , you're ready to start programming!
 
+
 ## Examples
 
+### Blinking the built in LED
 ```javascript
-var Cylon = require('cylon');
+var cylon = require('cylon');
 
-Cylon.robot({
+cylon.robot({
   connection: { name: 'edison', adaptor: 'intel-iot' },
-  device: {name: 'led', driver: 'led', pin: 13 },
+  device: {name: 'led', driver: 'led', pin: 13 }
+})
+  .on('ready', function(robot) {
+    setInterval(function() {
+      robot.led.toggle();
+    }, 1000);
+  })
+  .start();
+``` 
 
-  work: function(my) {
-    every((1).second(), function() {
-      my.led.toggle();
+### Bluetooth Programming on the Intel Edison featuring Sphero
+
+The Edison includes a bluetooth radio right on the board itself, so it's easy to get started programming bluetooth devices out of the box. First we need to enable bluetooth on the Edison.
+ - ssh into your Edison
+ - `# rfkill unblock bluetooth`
+ - `# bluetoothhctl`
+    - `[bluetooth]# scan on` 
+	- Find your Sphero and take note of the MAC address
+	- `[bluetooth]# scan off`
+	- `[bluetooth]# pair [MAC address of Sphero]`
+	- `[bluetooth]# exit`
+ - `# rfcomm bind 0 [MAC address of Sphero] 1`
+ - This will create a sphero connection bound to `/dev/rfcomm0`
+ - `# npm install cylon-intel-iot cylon-sphero`
+
+This example will flash the built in LED whenever the Sphero detects a collision
+```javascript
+var cylon = require('cylon');
+
+cylon.robot({
+  connections: [
+    { name: 'edison', adaptor: 'intel-iot'},
+    { name: 'sphero', adaptor: 'sphero', port: '/dev/rfcomm0' }
+  ],
+  devices: [
+    { name: 'led', driver: 'led', pin: 13, connection: 'edison' },
+    { name: 'sphero', driver: 'sphero', connection: 'sphero' }
+  ]
+})
+  .on('ready', function(robot){
+    console.log("Setting up Collision Detection...");
+    robot.sphero.stop();
+    robot.sphero.detectCollisions();
+
+    robot.sphero.on('collision', function() {
+      console.log("Collision");
+      robot.led.toggle();
     });
-  }
-}).start();
+  })
+  .on('error', function(err){
+    console.log(err);
+  }).start();
 ```
 
 ## Contributing
