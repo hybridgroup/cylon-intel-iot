@@ -175,7 +175,7 @@ cylon.robot({
 The Edison includes a bluetooth radio right on the board itself, so it's easy to get started programming bluetooth devices out of the box. First we need to enable bluetooth on the Edison.
  - ssh into your Edison
  - `# rfkill unblock bluetooth`
- - `# bluetoothhctl`
+ - `# bluetoothctl`
     - `[bluetooth]# scan on` 
 	- Find your Sphero and take note of the MAC address
 	- `[bluetooth]# scan off`
