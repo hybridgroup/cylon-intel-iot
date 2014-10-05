@@ -53,6 +53,10 @@ In order to enable Ethernet over USB on your Edison, follow the appropriate guid
 - $ ssh root@192.168.2.15
 
 ###### Linux
+- Examine your `/etc/network/interfaces` file, if you do not have this line, you must add it and then restart your computer
+```
+iface usb0 inet dhcp
+```
 - Plug your Edison into your computer
 - $ sudo ifconfig usb0 192.168.2.1 255.255.255.0
 - $ ssh root@192.168.2.15
