@@ -2,6 +2,7 @@
 
 
 var Adaptor = source("adaptor"),
+    Utils = source("utils"),
     Mraa = source('mraa');
 
 var MockPin = function(num) {
@@ -42,43 +43,6 @@ describe("Adaptor", function() {
       expect(adaptor.interval).to.be.eql(0.1);
     });
 
-    describe("@i2c", function() {
-      var i2c = {};
-
-      beforeEach(function() {
-        stub(Mraa, 'I2c').returns(i2c);
-      });
-
-      afterEach(function() {
-        Mraa.I2c.restore();
-      });
-
-      context("by default", function() {
-        it("is a new Mraa.i2c instance", function() {
-          adaptor = new Adaptor();
-          expect(adaptor.i2c).to.be.eql(i2c);
-
-          expect(Mraa.I2c).to.be.calledWithNew;
-          expect(Mraa.I2c).to.be.calledWith(0);
-        });
-      });
-
-      context("if the Mraa platform type is 2", function() {
-        beforeEach(function() {
-          stub(Mraa, 'getPlatformType').returns(2);
-          adaptor = new Adaptor();
-        });
-
-        afterEach(function() {
-          Mraa.getPlatformType.restore();
-        });
-
-        it("sets @i2c to a modified Mraa.I2c instance", function() {
-          expect(Mraa.I2c).to.be.calledWith(6);
-          expect(Mraa.I2c).to.be.calledWithNew;
-        })
-      });
-    });
   });
 
   describe("#commands", function() {
@@ -396,12 +360,12 @@ describe("Adaptor", function() {
       context("if the board is a Galileo Gen1", function() {
         beforeEach(function() {
           delete adaptor.pwmPins[10];
-          stub(adaptor, 'isGalileoGen1').returns(true);
+          stub(Utils, 'isGalileoGen1').returns(true);
           adaptor.pwmWrite(10, 0);
         });
 
         afterEach(function() {
-          adaptor.isGalileoGen1.restore();
+          Utils.isGalileoGen1.restore();
         });
 
         it('sets the period', function() {
@@ -472,12 +436,4 @@ describe("Adaptor", function() {
     });
   });
 
-  describe("#isGalileoGen1", function() {
-    it("checks the platform type", function() {
-      stub(Mraa, 'getPlatformType').returns(1);
-      expect(adaptor.isGalileoGen1()).to.be.eql(false);
-      expect(Mraa.getPlatformType).to.be.called;
-      Mraa.getPlatformType.restore();
-    })
-  });
 });
