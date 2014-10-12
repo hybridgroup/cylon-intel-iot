@@ -12,7 +12,10 @@ describe("cylon-intel-iot", function() {
     var bot;
 
     beforeEach(function() {
-      bot = { registerAdaptor: spy() };
+      bot = { 
+        registerAdaptor: spy(),
+        registerDriver: spy() 
+      };
       stub(GPIO, 'register');
       stub(I2C, 'register');
       module.register(bot);
