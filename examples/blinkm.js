@@ -13,7 +13,7 @@ Cylon.robot({
 
     my.blinkm.goToRGB(0,0,0);
     my.blinkm.getRGBColor(function(err, data){
-      console.log("Starting Color: ", data)
+      console.log("Starting Color: ", data);
     });
 
     every((2).seconds(), function() {
