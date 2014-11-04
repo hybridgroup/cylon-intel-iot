@@ -39,7 +39,7 @@ describe("Adaptor", function() {
 
     it('interval to the provided interval, or 0.01 by default', function() {
       expect(adaptor.interval).to.be.eql(0.01);
-      adaptor = new Adaptor({ extraParams: { interval: 0.1 } });
+      adaptor = new Adaptor({ interval: 0.1 });
       expect(adaptor.interval).to.be.eql(0.1);
     });
 

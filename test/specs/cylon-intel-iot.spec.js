@@ -8,34 +8,22 @@ var module = source("cylon-intel-iot");
 var Adaptor = source('adaptor');
 
 describe("cylon-intel-iot", function() {
-  describe("#register", function() {
-    var bot;
-
-    beforeEach(function() {
-      bot = { 
-        registerAdaptor: spy(),
-        registerDriver: spy() 
-      };
-      stub(GPIO, 'register');
-      stub(I2C, 'register');
-      module.register(bot);
+  describe("#adaptors", function() {
+    it('is an array of supplied adaptors', function() {
+      expect(module.adaptors).to.be.eql(['intel-iot']);
     });
+  });
 
-    afterEach(function() {
-      GPIO.register.restore();
-      I2C.register.restore();
+  describe("#drivers", function() {
+    it('is an array of supplied drivers', function() {
+      var drivers = ['upm-hmc5883l', 'upm-lcm1602', 'upm-jhd1313m1'];
+      expect(module.drivers).to.be.eql(drivers);
     });
+  });
 
-    it("registers the 'intel-iot' adaptor with the robot", function() {
-      expect(bot.registerAdaptor).to.be.calledWith('cylon-intel-iot', 'intel-iot');
-    });
-
-    it("registers the robot with the GPIO module", function() {
-      expect(GPIO.register).to.be.calledWith(bot);
-    });
-
-    it("registers the robot with the I2C module", function() {
-      expect(GPIO.register).to.be.calledWith(bot);
+  describe("#dependencies", function() {
+    it('is an array of supplied dependencies', function() {
+      expect(module.dependencies).to.be.eql(['cylon-gpio', 'cylon-i2c']);
     });
   });
 
