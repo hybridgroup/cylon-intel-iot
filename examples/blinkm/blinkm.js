@@ -1,8 +1,13 @@
 var Cylon = require('cylon');
 
 Cylon.robot({
-  connection: { name: 'edison', adaptor: 'intel-iot' },
-  device: { name: 'blinkm', driver: 'blinkm' },
+  connections: {
+    edison: { adaptor: 'intel-iot' }
+  },
+
+  devices: {
+    blinkm: { driver: 'blinkm' }
+  },
 
   work: function(my) {
     my.blinkm.stopScript();

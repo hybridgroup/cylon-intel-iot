@@ -1,14 +1,17 @@
 var Cylon = require('cylon');
 
 Cylon.robot({
-  connection: { name: 'edison', adaptor: 'intel-iot' },
+  connections: {
+    edison: { adaptor: 'intel-iot' }
+  },
 
-  device: {
-    name: 'sensor',
-    driver: 'analogSensor',
-    pin: 0,
-    upperLimit: 900,
-    lowerLimit: 100
+  devices: {
+    sensor: {
+      driver: 'analogSensor',
+      pin: 0,
+      upperLimit: 900,
+      lowerLimit: 100
+    }
   },
 
   work: function(my) {
