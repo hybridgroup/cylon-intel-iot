@@ -31,7 +31,7 @@ In order to enable Ethernet over USB on your Edison, follow the appropriate guid
 - When you plug both usb cables into your computer, you should see a new network device show up
 - Right click on the new device and select properties
 - Scroll down to IPv4 and select properties
-- Select "Use the folloing IP address"
+- Select "Use the following IP address"
 - Set the IP information to:
 	- IP address:           `192.168.2.1`
 	- Subnet mask:          `255.255.255.0`
@@ -160,19 +160,22 @@ Once `cylon-intel-iot` has been installed , you're ready to start programming!
 
 ### Blinking the built in LED
 ```javascript
-var cylon = require('cylon');
+var Cylon = require('cylon');
 
-cylon.robot({
-  connection: { name: 'edison', adaptor: 'intel-iot' },
-  device: {name: 'led', driver: 'led', pin: 13 }
-})
-  .on('ready', function(robot) {
-    setInterval(function() {
-      robot.led.toggle();
-    }, 1000);
-  })
-  .start();
-``` 
+Cylon.robot({
+  connections: {
+    edison: { adaptor: 'intel-iot' }
+  },
+
+  devices: {
+    led: { driver: 'led', pin: 13 }
+  },
+
+  work: function(my) {
+    every((1).second(), my.led.toggle);
+  }
+}).start();
+```
 
 ### Bluetooth Programming on the Intel Edison featuring Sphero
 
@@ -190,32 +193,32 @@ The Edison includes a bluetooth radio right on the board itself, so it's easy to
  - `# npm install cylon-intel-iot cylon-sphero`
 
 This example will flash the built in LED whenever the Sphero detects a collision
+
 ```javascript
-var cylon = require('cylon');
+var Cylon = require('cylon');
 
-cylon.robot({
-  connections: [
-    { name: 'edison', adaptor: 'intel-iot'},
-    { name: 'sphero', adaptor: 'sphero', port: '/dev/rfcomm0' }
-  ],
-  devices: [
-    { name: 'led', driver: 'led', pin: 13, connection: 'edison' },
-    { name: 'sphero', driver: 'sphero', connection: 'sphero' }
-  ]
-})
-  .on('ready', function(robot){
+Cylon.robot({
+  connections: {
+    edison: { adaptor: 'intel-iot'},
+    sphero: { adaptor: 'sphero', port: '/dev/rfcomm0' }
+  },
+
+  devices: {
+    led: { driver: 'led', pin: 13, connection: 'edison' },
+    sphero: { driver: 'sphero', connection: 'sphero' }
+  },
+
+  work: function(my) {
     console.log("Setting up Collision Detection...");
-    robot.sphero.stop();
-    robot.sphero.detectCollisions();
+    my.sphero.stop();
+    my.sphero.detectCollisions();
 
-    robot.sphero.on('collision', function() {
+    my.sphero.on('collision', function() {
       console.log("Collision");
-      robot.led.toggle();
+      my.led.toggle();
     });
-  })
-  .on('error', function(err){
-    console.log(err);
-  }).start();
+  }
+}).start();
 ```
 
 ## Contributing
