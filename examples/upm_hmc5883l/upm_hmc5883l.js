@@ -1,8 +1,13 @@
 var Cylon = require('cylon');
 
 Cylon.robot({
-  connection: {name: 'edison', adaptor: 'intel-iot'},
-  device: {name: 'hmc5883l', driver: 'upm-hmc5883l'},
+  connections: {
+    edison: { adaptor: 'intel-iot' }
+  },
+
+  devices: {
+    hmc5883l: { driver: 'upm-hmc5883l' }
+  },
 
   work: function(my) {
     every((1).second(), function() {
