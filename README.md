@@ -15,7 +15,7 @@ https://github.com/hybridgroup/cylon
 
 [![Build Status](https://secure.travis-ci.org/hybridgroup/cylon-intel-iot.png?branch=master)](http://travis-ci.org/hybridgroup/cylon-intel-iot) [![Code Climate](https://codeclimate.com/github/hybridgroup/cylon-intel-iot/badges/gpa.svg)](https://codeclimate.com/github/hybridgroup/cylon-intel-iot) [![Test Coverage](https://codeclimate.com/github/hybridgroup/cylon-intel-iot/badges/coverage.svg)](https://codeclimate.com/github/hybridgroup/cylon-intel-iot)
 
-## Getting Started
+## How to Install
 
 #### Setting up your Intel Edison
 
@@ -37,7 +37,7 @@ In order to enable Ethernet over USB on your Edison, follow the appropriate guid
 	- Subnet mask:          `255.255.255.0`
 	- Default gateway:      `192.168.2.255`
 	- Preferred DNS server: `8.8.8.8`
-- Save the changes 
+- Save the changes
 - open putty
 - ssh to 192.168.2.15
 - The user is 'root' and the password is what you configured during the getting started guide
@@ -83,7 +83,7 @@ For Mac or Linux hosts, it's as easy as extracting the image from the downloaded
 
     $ sudo dd if=/path/to/iot-devkit-latest-mmcblkp0.direct of=/dev/sdX bs=1M && sudo sync
 
-where `/dev/sdX` is the location of your sd card. For help determing the location of your sd card, consult the appropriate guide for your OS below. 
+where `/dev/sdX` is the location of your sd card. For help determing the location of your sd card, consult the appropriate guide for your OS below.
 
 ###### OS X Users
 
@@ -156,7 +156,7 @@ following command
 Once `cylon-intel-iot` has been installed , you're ready to start programming!
 
 
-## Examples
+## How to Use
 
 ### Blinking the built in LED
 ```javascript
@@ -183,7 +183,7 @@ The Edison includes a bluetooth radio right on the board itself, so it's easy to
  - ssh into your Edison
  - `# rfkill unblock bluetooth`
  - `# bluetoothctl`
-    - `[bluetooth]# scan on` 
+    - `[bluetooth]# scan on`
 	- Find your Sphero and take note of the MAC address
 	- `[bluetooth]# scan off`
 	- `[bluetooth]# pair [MAC address of Sphero]`
@@ -220,6 +220,16 @@ Cylon.robot({
   }
 }).start();
 ```
+
+## How to Connect
+
+The [Intel Edison Getting Started Guide](https://communities.intel.com/docs/DOC-23147) details connection instructions for Windows, Mac and Linux.
+
+## Documentation
+
+We're busy adding documentation to our web site at http://cylonjs.com/ please check there as we continue to work on Cylon.js
+
+Thank you!
 
 ## Contributing
 
