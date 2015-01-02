@@ -1,10 +1,12 @@
-var Cylon = require('cylon');
+"use strict";
+
+var Cylon = require("cylon");
 
 Cylon
   .robot()
-  .connection('edison', { adaptor: 'intel-iot' })
-  .device('led', { driver: 'led', pin: 3 })
-  .on('ready', function(bot) {
+  .connection("edison", { adaptor: "intel-iot" })
+  .device("led", { driver: "led", pin: 3 })
+  .on("ready", function(bot) {
     var brightness = 0,
     fade = 5;
 

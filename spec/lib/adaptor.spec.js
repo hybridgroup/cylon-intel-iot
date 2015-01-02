@@ -1,9 +1,9 @@
-'use strict';
-
+/* jshint expr:true */
+"use strict";
 
 var Adaptor = source("adaptor"),
     Utils = source("utils"),
-    Mraa = source('mraa');
+    Mraa = source("mraa");
 
 var MockPin = function(num) {
   this.pinNum = num;
@@ -25,19 +25,19 @@ describe("Adaptor", function() {
   });
 
   describe("constructor", function() {
-    it('sets @pins to an empty array by default', function() {
+    it("sets @pins to an empty array by default", function() {
       expect(adaptor.pins).to.be.eql([]);
     });
 
-    it('sets @pwmPins to an empty array by default', function() {
+    it("sets @pwmPins to an empty array by default", function() {
       expect(adaptor.pwmPins).to.be.eql([]);
     });
 
-    it('sets @analogPins to an empty array by default', function() {
+    it("sets @analogPins to an empty array by default", function() {
       expect(adaptor.analogPins).to.be.eql([]);
     });
 
-    it('interval to the provided interval, or 0.01 by default', function() {
+    it("interval to the provided interval, or 0.01 by default", function() {
       expect(adaptor.interval).to.be.eql(0.01);
       adaptor = new Adaptor({ interval: 0.1 });
       expect(adaptor.interval).to.be.eql(0.1);
@@ -47,17 +47,17 @@ describe("Adaptor", function() {
 
   describe("#commands", function() {
     it("is an array of IOT commands", function() {
-      expect(adaptor.commands).to.be.an('array');
+      expect(adaptor.commands).to.be.an("array");
 
       adaptor.commands.map(function(cmd) {
-        expect(cmd).to.be.a('string');
+        expect(cmd).to.be.a("string");
       });
     });
   });
 
   describe("#firmwareName", function() {
     beforeEach(function() {
-      stub(Mraa, 'getPlatformType');
+      stub(Mraa, "getPlatformType");
     });
 
     afterEach(function() {
@@ -110,7 +110,7 @@ describe("Adaptor", function() {
 
     beforeEach(function() {
       clock = sinon.useFakeTimers();
-      stub(global, 'every');
+      stub(global, "every");
       Mraa.DIR_IN = 100;
 
       adaptor.pins[1] = new MockPin(1);
@@ -119,12 +119,12 @@ describe("Adaptor", function() {
     afterEach(function() {
       clock.restore();
       global.every.restore();
-      delete Mraa.DIR_IN
+      delete Mraa.DIR_IN;
     });
 
     context("if the pin hasn't already been set", function() {
       beforeEach(function() {
-        Mraa.Gpio = stub().returns(new MockPin);
+        Mraa.Gpio = stub().returns(new MockPin());
         adaptor.pins = [];
       });
 
@@ -167,7 +167,7 @@ describe("Adaptor", function() {
       });
 
       afterEach(function() {
-        stub(global, 'every');
+        stub(global, "every");
       });
 
       it("reads the value from the pin", function() {
@@ -175,7 +175,7 @@ describe("Adaptor", function() {
       });
 
       it("emits the value", function() {
-        expect(adaptor.emit).to.be.calledWith('digitalRead', 0.5);
+        expect(adaptor.emit).to.be.calledWith("digitalRead", 0.5);
       });
 
       it("triggers the callback with the value", function() {
@@ -192,12 +192,13 @@ describe("Adaptor", function() {
           expect(adaptor.emit).to.be.calledOnce;
           expect(callback).to.be.calledOnce;
         });
-      })
+      });
     });
   });
 
   describe("#digitalWrite", function() {
-    var pin
+    var pin;
+
     beforeEach(function() {
       pin = adaptor.pins[1] = new MockPin(1);
       Mraa.DIR_OUT = 0;
@@ -205,13 +206,13 @@ describe("Adaptor", function() {
     });
 
     afterEach(function() {
-      delete Mraa.DIR_OUT
+      delete Mraa.DIR_OUT;
     });
 
     context("if the pin isn't registered", function() {
       beforeEach(function() {
-        Mraa.Gpio = stub().returns(new MockPin);
-        adaptor.digitalWrite(10)
+        Mraa.Gpio = stub().returns(new MockPin());
+        adaptor.digitalWrite(10);
       });
 
       afterEach(function() {
@@ -242,7 +243,7 @@ describe("Adaptor", function() {
 
     beforeEach(function() {
       clock = sinon.useFakeTimers();
-      stub(global, 'every');
+      stub(global, "every");
 
       adaptor.analogPins[1] = new MockPin(1);
     });
@@ -254,7 +255,7 @@ describe("Adaptor", function() {
 
     context("if the pin hasn't already been set", function() {
       beforeEach(function() {
-        Mraa.Aio = stub().returns(new MockPin);
+        Mraa.Aio = stub().returns(new MockPin());
         adaptor.analogPins = [];
       });
 
@@ -288,19 +289,19 @@ describe("Adaptor", function() {
         adaptor.emit = spy();
 
         adaptor.analogRead(1, callback);
-        clock.tick(adaptor.interval)
+        clock.tick(adaptor.interval);
       });
 
       afterEach(function() {
-        stub(global, 'every');
-      })
+        stub(global, "every");
+      });
 
       it("reads the value from the pin", function() {
         expect(pin.read).to.be.called;
       });
 
       it("emits the value", function() {
-        expect(adaptor.emit).to.be.calledWith('analogRead', 0.5);
+        expect(adaptor.emit).to.be.calledWith("analogRead", 0.5);
       });
 
       it("triggers the callback with the value", function() {
@@ -333,7 +334,7 @@ describe("Adaptor", function() {
       beforeEach(function() {
         pin = new MockPin(10);
         Mraa.Pwm = stub().returns(pin);
-        adaptor.pwmWrite(10, 0)
+        adaptor.pwmWrite(10, 0);
       });
 
       afterEach(function() {
@@ -355,12 +356,12 @@ describe("Adaptor", function() {
 
       it("doesn't normally set the period", function() {
         expect(pin.period_us).to.not.be.called;
-      })
+      });
 
       context("if the board is a Galileo Gen1", function() {
         beforeEach(function() {
           delete adaptor.pwmPins[10];
-          stub(Utils, 'isGalileoGen1').returns(true);
+          stub(Utils, "isGalileoGen1").returns(true);
           adaptor.pwmWrite(10, 0);
         });
 
@@ -368,10 +369,10 @@ describe("Adaptor", function() {
           Utils.isGalileoGen1.restore();
         });
 
-        it('sets the period', function() {
+        it("sets the period", function() {
           expect(pin.period_us).to.be.calledWith(500);
         });
-      })
+      });
     });
 
     it("writes the value to the pin", function() {
@@ -390,20 +391,22 @@ describe("Adaptor", function() {
         write: stub()
       };
 
-      adaptor.i2cWrite('address', 'cmd', ['buff'])
+      adaptor.i2cWrite("address", "cmd", ["buff"]);
     });
 
     it("writes the i2c address to the board", function() {
-      expect(i2c.address).to.be.calledWith('address');
+      expect(i2c.address).to.be.calledWith("address");
     });
 
     it("write the data to the board", function() {
-      expect(i2c.write).to.be.calledWith(new Buffer(['cmd'].concat(['buff'])).toString())
+      expect(i2c.write).to.be.calledWith(
+        new Buffer(["cmd"].concat(["buff"])).toString()
+      );
     });
 
     it("triggers the callback, if provided", function() {
       callback = spy();
-      adaptor.i2cWrite('address', 'cmd', ['buff'], callback);
+      adaptor.i2cWrite("address", "cmd", ["buff"], callback);
       expect(callback).to.be.called;
     });
   });
@@ -417,22 +420,22 @@ describe("Adaptor", function() {
       i2c = adaptor.i2c = {
         address: stub(),
         write: stub(),
-        read: stub().returns('data')
+        read: stub().returns("data")
       };
 
-      adaptor.i2cRead('address', 'cmd', 'length', callback);
+      adaptor.i2cRead("address", "cmd", "length", callback);
     });
 
     it("writes the i2c address to the board", function() {
-      expect(i2c.address).to.be.calledWith('address');
+      expect(i2c.address).to.be.calledWith("address");
     });
 
     it("write the command to the board", function() {
-      expect(i2c.write).to.be.calledWith(new Buffer(['cmd']).toString())
+      expect(i2c.write).to.be.calledWith(new Buffer(["cmd"]).toString());
     });
 
     it("triggers the callback", function() {
-      expect(callback.firstCall.args[1].toString()).to.be.eql('data');
+      expect(callback.firstCall.args[1].toString()).to.be.eql("data");
     });
   });
 

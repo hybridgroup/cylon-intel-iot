@@ -1,12 +1,14 @@
-var Cylon = require('cylon');
+"use strict";
+
+var Cylon = require("cylon");
 
 Cylon.robot({
   connections: {
-    edison: { adaptor: 'intel-iot' }
+    edison: { adaptor: "intel-iot" }
   },
 
   devices: {
-    hmc5883l: { driver: 'upm-hmc5883l' }
+    hmc5883l: { driver: "upm-hmc5883l" }
   },
 
   work: function(my) {
