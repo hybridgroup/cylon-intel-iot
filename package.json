@@ -1,6 +1,6 @@
 {
   "name": "cylon-intel-iot",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "main": "lib/cylon-intel-iot.js",
   "description": "Cylon module for Intel-IoT platforms",
   "homepage": "http://cylonjs.com",
@@ -24,14 +24,14 @@
   },
 
   "peerDependencies": {
-    "cylon":      ">= 0.21.0 < 1",
-    "cylon-gpio": ">= 0.21.0 < 1",
-    "cylon-i2c":  ">= 0.18.0 < 1"
+    "cylon":      ">= 0.22.0 < 1",
+    "cylon-gpio": ">= 0.22.0 < 1",
+    "cylon-i2c":  ">= 0.19.0 < 1"
   },
 
   "dependencies": {
-    "cylon":      "~0.21.0",
-    "cylon-gpio": "~0.21.0",
-    "cylon-i2c":  "~0.18.0"
+    "cylon":      "~0.22.0",
+    "cylon-gpio": "~0.22.0",
+    "cylon-i2c":  "~0.19.0"
   }
 }
