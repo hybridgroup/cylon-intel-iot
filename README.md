@@ -151,7 +151,7 @@ you will now install `cylon-intel-iot`. To do this you must be
 logged into the board, through ssh or the uart serial connection, and execute the
 following command
 
-    $ npm install cylon-intel-iot
+    $ npm install cylon cylon-intel-iot
 
 Once `cylon-intel-iot` has been installed , you're ready to start programming!
 
@@ -190,7 +190,7 @@ The Edison includes a bluetooth radio right on the board itself, so it's easy to
 	- `[bluetooth]# exit`
  - `# rfcomm bind 0 [MAC address of Sphero] 1`
  - This will create a sphero connection bound to `/dev/rfcomm0`
- - `# npm install cylon-intel-iot cylon-sphero`
+ - `# npm install cylon cylon-intel-iot cylon-sphero`
 
 This example will flash the built in LED whenever the Sphero detects a collision
 
