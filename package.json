@@ -1,6 +1,6 @@
 {
   "name": "cylon-intel-iot",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "main": "lib/cylon-intel-iot.js",
   "description": "Cylon module for Intel-IoT platforms",
   "homepage": "http://cylonjs.com",
