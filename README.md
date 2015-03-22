@@ -69,6 +69,11 @@ Execute the following command on the Edison itself
 
 If you have a valid wifi connection, you should be able to reach out of your network!
 
+##### Ethernet over USB internet sharing
+If you are using ethernet over USB then you can enable internet sharing on your Edison by executing this command on the Edison itself
+```bash
+/sbin/route add default gw 192.168.2.1
+```
 
 Now you're ready to install MRAA and Cylon.
 
