@@ -399,9 +399,7 @@ describe("Adaptor", function() {
     });
 
     it("write the data to the board", function() {
-      expect(i2c.write).to.be.calledWith(
-        new Buffer(["cmd"].concat(["buff"]))
-      );
+      expect(i2c.write.args[0][0]).to.be.eql(new Buffer(["cmd", "buff"]));
     });
 
     it("triggers the callback, if provided", function() {
@@ -431,7 +429,7 @@ describe("Adaptor", function() {
     });
 
     it("write the command to the board", function() {
-      expect(i2c.write).to.be.calledWith(new Buffer(["cmd"]));
+      expect(i2c.write.args[0][0]).to.be.eql(new Buffer(["cmd"]));
     });
 
     it("triggers the callback", function() {
