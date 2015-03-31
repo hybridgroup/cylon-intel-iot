@@ -13,6 +13,10 @@ This module currently supports the following Intel IoT hardware:
 For more information about Cylon.js, check out the repo at
 https://github.com/hybridgroup/cylon
 
+Want to use Ruby on robots? Check out our sister project Artoo (http://artoo.io)
+
+Want to use the Go programming language to power your robots? Check out our sister project Gobot (http://gobot.io).
+
 [![Build Status](https://secure.travis-ci.org/hybridgroup/cylon-intel-iot.png?branch=master)](http://travis-ci.org/hybridgroup/cylon-intel-iot) [![Code Climate](https://codeclimate.com/github/hybridgroup/cylon-intel-iot/badges/gpa.svg)](https://codeclimate.com/github/hybridgroup/cylon-intel-iot) [![Test Coverage](https://codeclimate.com/github/hybridgroup/cylon-intel-iot/badges/coverage.svg)](https://codeclimate.com/github/hybridgroup/cylon-intel-iot)
 
 ## How to Install
