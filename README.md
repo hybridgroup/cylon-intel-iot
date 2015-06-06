@@ -1,7 +1,6 @@
 # Cylon.js For Intel IoT
 
-Cylon.js (http://cylonjs.com) is a JavaScript framework for robotics and
-physical computing using Node.js
+Cylon.js (http://cylonjs.com) is a JavaScript framework for robotics, physical computing, and the Internet of Things (IoT).
 
 This repository contains the Cylon adaptor for the [Intel Edison](http://www.intel.com/content/www/us/en/do-it-yourself/edison.html) and [Intel Galileo](http://www.intel.com/content/www/us/en/do-it-yourself/galileo-maker-quark-board.html) IoT platforms. It uses the MRAA node module (https://github.com/intel-iot-devkit/mraa) created by the [Intel IoT team](https://github.com/intel-iot-devkit) thank you!
 
@@ -9,9 +8,6 @@ This module currently supports the following Intel IoT hardware:
 - Intel Galileo Gen 1
 - Intel Galileo Gen 2
 - Intel Edison with the Arduino breakout board
-
-For more information about Cylon.js, check out the repo at
-https://github.com/hybridgroup/cylon
 
 Want to use Ruby on robots? Check out our sister project Artoo (http://artoo.io)
 
@@ -153,7 +149,7 @@ you must now install the latest version of the
 you simply log into your Intel board, through ssh or the uart serial connection, and follow
 the steps [here](https://github.com/intel-iot-devkit/mraa#installing-on-your-board).
 
-#### Install Cylon
+#### Install Cylon.js
 
 Once you have flashed your Intel board with the latest firmware as well as updated MRAA,
 you will now install `cylon-intel-iot`. To do this you must be
@@ -242,35 +238,15 @@ Thank you!
 
 ## Contributing
 
-* All patches must be provided under the Apache 2.0 License
-* Please use the -s option in git to "sign off" that the commit is your work and you are providing it under the Apache 2.0 License
-* Submit a Github Pull Request to the appropriate branch and ideally discuss the changes with us in IRC.
-* We will look at the patch, test it out, and give you feedback.
-* Avoid doing minor whitespace changes, renamings, etc. along with merged content. These will be done by the maintainers from time to time but they can complicate merges and should be done seperately.
-* Take care to maintain the existing coding style.
-* Add unit tests for any new or changed functionality & lint and test your code using `make test` and `make lint`.
-* All pull requests should be "fast forward"
-  * If there are commits after yours use “git rebase -i <new_head_branch>”
-    * If you have local changes you may need to use “git stash”
-      * For git help see [progit](http://git-scm.com/book) which is an awesome (and free) book on git
+For our contribution guidelines, please go to [https://github.com/hybridgroup/cylon/blob/master/CONTRIBUTING.md
+](https://github.com/hybridgroup/cylon/blob/master/CONTRIBUTING.md
+).
 
 ## Release History
 
-Version 0.6.0 - Compatibility with Cylon 1.0.0
-
-Version 0.5.1 - Add support for UPM Grove temperature sensor
-
-Version 0.5.0 - Compatibility with Cylon 0.22.0
-
-Version 0.4.0 - Compatibility with Cylon 0.21.0
-
-Version 0.3.0 - Compatibility with Cylon 0.20.0
-
-Version 0.2.0 - Compatibility with Cylon 0.19.0
-
-Version 0.1.1 - Fix PWM issue on Galileo Gen 1
-
-Version 0.1.0 - Initial release
+For the release history, please go to [https://github.com/hybridgroup/cylon-intel-iot/blob/master/RELEASES.md
+](https://github.com/hybridgroup/cylon-intel-iot/blob/master/RELEASES.md
+).
 
 ## License
 Copyright (c) 2013-2015 The Hybrid Group. Licensed under the Apache 2.0 license.
