@@ -10,18 +10,23 @@ Cylon
     bot.blinkm.stopScript();
 
     bot.blinkm.getFirmware(function(err, version) {
+      if (err) { console.error(err); }
       console.log("Started BlinkM version " + version);
     });
 
-    bot.blinkm.goToRGB(0,0,0);
-    bot.blinkm.getRGBColor(function(err, data){
+    bot.blinkm.goToRGB(0, 0, 0);
+
+    bot.blinkm.getRGBColor(function(err, data) {
+      if (err) { console.error(err); }
       console.log("Starting Color: ", data);
     });
 
     every((2).seconds(), function() {
-      bot.blinkm.getRGBColor(function(err, data){
+      bot.blinkm.getRGBColor(function(err, data) {
+        if (err) { console.error(err); }
         console.log("Current Color: ", data);
       });
+
       bot.blinkm.fadeToRandomRGB(128, 128, 128);
     });
   });

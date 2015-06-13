@@ -1,9 +1,8 @@
-/* jshint expr:true */
 "use strict";
 
-var iot = source("cylon-intel-iot");
+var iot = lib("cylon-intel-iot");
 
-var Adaptor = source("adaptor");
+var Adaptor = lib("adaptor");
 
 describe("cylon-intel-iot", function() {
   describe("#adaptors", function() {

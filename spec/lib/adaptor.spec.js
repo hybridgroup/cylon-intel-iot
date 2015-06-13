@@ -1,9 +1,8 @@
-/* jshint expr:true */
 "use strict";
 
-var Adaptor = source("adaptor"),
-    Utils = source("utils"),
-    Mraa = source("mraa");
+var Adaptor = lib("adaptor"),
+    Utils = lib("utils"),
+    Mraa = lib("mraa");
 
 var MockPin = function(num) {
   this.pinNum = num;

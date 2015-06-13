@@ -1,8 +1,7 @@
-/* jshint expr:true */
 "use strict";
 
-var Utils = source("utils"),
-    Mraa = source("mraa");
+var Utils = lib("utils"),
+    Mraa = lib("mraa");
 
 describe("Utils", function() {
   describe("#isGalileoGen1", function() {
