@@ -1,6 +1,6 @@
 "use strict";
 
-var iot = lib("cylon-intel-iot");
+var iot = lib("../");
 
 var Adaptor = lib("adaptor");
 

@@ -1,15 +1,7 @@
-/*
- * intel-iot
- * http://cylonjs.com
- *
- * Copyright (c) 2014 The Hybrid Group
- * Licensed under the Apache 2.0 license.
-*/
-
 "use strict";
 
-var Adaptor = require("./adaptor"),
-    Driver = require("./upm-sensor");
+var Adaptor = require("./lib/adaptor"),
+    Driver = require("./lib/upm-sensor");
 
 module.exports = {
   adaptors: ["intel-iot"],
