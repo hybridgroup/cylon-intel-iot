@@ -4,11 +4,11 @@ var Cylon = require("cylon");
 
 Cylon.robot({
   connections: {
-    edison: { adaptor: "intel-iot"}
+    edison: { adaptor: "intel-iot" }
   },
 
   devices: {
-    servo: { driver: "servo", pin: 3, }
+    servo: { driver: "servo", pin: 3 }
   },
 
   work: function(my) {

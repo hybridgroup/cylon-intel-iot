@@ -31,11 +31,11 @@
   ],
 
   "devDependencies": {
-    "sinon-chai": "2.5.0",
-    "chai":       "1.9.1",
-    "mocha":      "1.18.2",
-    "sinon":      "1.9.1",
-    "eslint":     "0.22.1"
+    "sinon-chai": "^2.8.0",
+    "chai":       "^3.2.0",
+    "mocha":      "^2.2.5",
+    "sinon":      "^1.15.4",
+    "eslint":     "^0.24.0"
   },
 
   "dependencies": {
