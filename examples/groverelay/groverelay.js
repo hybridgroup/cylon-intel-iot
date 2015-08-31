@@ -15,7 +15,7 @@ Cylon.robot({
   },
 
   work: function(my) {
-    every((10).seconds(), function(){
+    every((10).seconds(), function() {
       if (my.relay.isOff()) {
         my.relay.on();
         console.log("on");

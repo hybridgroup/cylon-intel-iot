@@ -15,7 +15,7 @@ Cylon.robot({
   },
 
   work: function(my) {
-    every((30).seconds(), function(){
+    every((30).seconds(), function() {
       var value = my.sensor.value();
       console.log(value);
     });

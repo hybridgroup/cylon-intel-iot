@@ -12,7 +12,7 @@ Cylon
 
   .on("ready", function(bot) {
     setInterval(function() {
-      if (bot.relay.isOff()){
+      if (bot.relay.isOff()) {
         bot.relay.turnOn();
         console.log("on");
       } else {
