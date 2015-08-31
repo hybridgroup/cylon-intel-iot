@@ -5,7 +5,7 @@ var Adaptor = require("./lib/adaptor"),
 
 module.exports = {
   adaptors: ["intel-iot"],
-  drivers: ["upm-grovemoisture", "upm-groverelay"
+  drivers: ["upm-grovemoisture", "upm-groverelay",
             "upm-grovespeaker", "upm-grovetemp",
             "upm-grovewfs", "upm-adxl345",
             "upm-at42qt1070", "upm-biss0001",
