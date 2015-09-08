@@ -14,8 +14,7 @@ Cylon.robot({
   },
 
   work: function(my) {
-    every((1).second(), function() {
-      my.accel.update();
+    every(500, function() {
       var force = my.accel.getAcceleration();
       console.log({ x: force.x,
                     y: force.y,
