@@ -1,5 +1,7 @@
 ## Release History
 
+Version 0.8.1 - Bugfix to handle missing i2c devices
+
 Version 0.8.0 - Use Cylon 1.2.0
 
 Version 0.7.0 - Use Cylon 1.1.0
