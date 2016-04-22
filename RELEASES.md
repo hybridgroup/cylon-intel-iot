@@ -1,5 +1,7 @@
 ## Release History
 
+Version 0.9.0 - Update to Cylon 1.3.0, cleanup dependencies, i2c port select
+
 Version 0.8.1 - Bugfix to handle missing i2c devices
 
 Version 0.8.0 - Use Cylon 1.2.0
