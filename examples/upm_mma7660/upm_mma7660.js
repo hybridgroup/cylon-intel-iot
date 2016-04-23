@@ -23,7 +23,8 @@ Cylon.robot({
 
     every(100, function() {
       my.mma7660.getAcceleration(ax, ay, az);
-      console.log("ax, ay, az:", ax, ay, az);
+      var x = my.mma7660.floatp_value(ax)
+      console.log("x:", x);
     });
   }
 }).start();
