@@ -13,9 +13,9 @@ Cylon.robot({
 
   work: function(my) {
     var ax, ay, az;
-    ax = my.mma7660.new_floatp();
-    ay = my.mma7660.new_floatp();
-    az = my.mma7660.new_floatp();
+    ax = my.mma7660.newFloatP();
+    ay = my.mma7660.newFloatP();
+    az = my.mma7660.newFloatP();
 
     my.mma7660.setModeStandby();
     my.mma7660.setSampleRate(1);
@@ -23,8 +23,10 @@ Cylon.robot({
 
     every(100, function() {
       my.mma7660.getAcceleration(ax, ay, az);
-      var x = my.mma7660.floatp_value(ax)
-      console.log("x:", x);
+      var x = my.mma7660.floatPValue(ax);
+      var y = my.mma7660.floatPValue(ay);
+      var z = my.mma7660.floatPValue(az);
+      console.log("x, y, z:", x, y, z);
     });
   }
 }).start();
