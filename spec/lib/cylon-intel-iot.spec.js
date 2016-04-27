@@ -18,7 +18,8 @@ describe("cylon-intel-iot", function() {
         "upm-lcm1602",
         "upm-jhd1313m1",
         "upm-grovetemp",
-        "upm-mma7660"
+        "upm-mma7660",
+        "upm-ppd42ns"
       ];
       expect(iot.drivers).to.be.eql(drivers);
     });

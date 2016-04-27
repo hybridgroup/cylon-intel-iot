@@ -5,8 +5,13 @@ var Adaptor = require("./lib/adaptor"),
 
 module.exports = {
   adaptors: ["intel-iot"],
-  drivers: ["upm-hmc5883l", "upm-lcm1602", "upm-jhd1313m1", "upm-grovetemp",
-            "upm-mma7660"],
+  drivers: ["upm-hmc5883l",
+            "upm-lcm1602",
+            "upm-jhd1313m1",
+            "upm-grovetemp",
+            "upm-mma7660",
+            "upm-ppd42ns"],
+
   dependencies: ["cylon-gpio", "cylon-i2c"],
 
   adaptor: function(opts) {
