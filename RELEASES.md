@@ -1,5 +1,7 @@
 ## Release History
 
+Version 0.11.0 - Add UPM PPD42NS driver
+
 Version 0.10.0 - Add UPM MMA7660 driver
 
 Version 0.9.0 - Update to Cylon 1.3.0, cleanup dependencies, i2c port select
