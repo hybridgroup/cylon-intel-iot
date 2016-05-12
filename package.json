@@ -1,6 +1,6 @@
 {
   "name": "cylon-intel-iot",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "Cylon module for Intel-IoT platforms",
   "homepage": "http://cylonjs.com",
   "bugs": "https://github.com/hybridgroup/cylon-intel-iot/issues",
@@ -28,8 +28,7 @@
     "intel",
     "edison",
     "galileo",
-    "mraa",
-    "upm"
+    "mraa"
   ],
 
   "devDependencies": {

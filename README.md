@@ -4,10 +4,6 @@ Cylon.js (http://cylonjs.com) is a JavaScript framework for robotics, physical c
 
 This repository contains the Cylon adaptor for the [Intel Edison](http://www.intel.com/content/www/us/en/do-it-yourself/edison.html) and [Intel Galileo](http://www.intel.com/content/www/us/en/do-it-yourself/galileo-maker-quark-board.html) IoT platforms. It uses the MRAA node module (https://github.com/intel-iot-devkit/mraa) created by the [Intel IoT team](https://github.com/intel-iot-devkit) thank you!
 
-This module currently supports the following Intel IoT hardware:
-- Intel Edison
-- Intel Galileo (Gen 1/Gen 2)
-
 Want to use Ruby on robots? Check out our sister project Artoo (http://artoo.io)
 
 Want to use the Go programming language to power your robots? Check out our sister project Gobot (http://gobot.io).
@@ -51,6 +47,21 @@ Everything you need to get started with the Edison is in the Intel Getting Start
 located [here](https://communities.intel.com/docs/DOC-23147). Don't forget to
 configure your Edison's wifi connection and [flash](https://communities.intel.com/docs/DOC-23192)
 your Edison with the latest firmware image (Yocto 3)!
+
+### Updating Node.js on the Intel Edison
+
+The Intel Edison has an older Node.js (0.10.x) installed by default. You can easily update it using [`nvm`](https://github.com/creationix/nvm).
+
+The latest Yocto needs to update the version of the `tar` file decompression utility before you can install new versions of Node.js using `nvm`. You can easily do this as follows. First, add the "unofficial official" package repository, as documented here [http://alextgalileo.altervista.org/edison-package-repo-configuration-instructions.html](http://alextgalileo.altervista.org/edison-package-repo-configuration-instructions.html).
+
+Once you have added the additional package repository, run the following commands:
+
+```
+opkg update
+opkg install tar
+```
+
+You are now ready to install `nvm` on your Edison.
 
 ## How to Connect
 
