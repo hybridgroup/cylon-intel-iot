@@ -11,20 +11,6 @@ describe("cylon-intel-iot", function() {
     });
   });
 
-  describe("#drivers", function() {
-    it("is an array of supplied drivers", function() {
-      var drivers = [
-        "upm-hmc5883l",
-        "upm-lcm1602",
-        "upm-jhd1313m1",
-        "upm-grovetemp",
-        "upm-mma7660",
-        "upm-ppd42ns"
-      ];
-      expect(iot.drivers).to.be.eql(drivers);
-    });
-  });
-
   describe("#dependencies", function() {
     it("is an array of supplied dependencies", function() {
       expect(iot.dependencies).to.be.eql(["cylon-gpio", "cylon-i2c"]);

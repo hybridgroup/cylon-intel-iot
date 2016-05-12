@@ -5,9 +5,8 @@ Cylon.js (http://cylonjs.com) is a JavaScript framework for robotics, physical c
 This repository contains the Cylon adaptor for the [Intel Edison](http://www.intel.com/content/www/us/en/do-it-yourself/edison.html) and [Intel Galileo](http://www.intel.com/content/www/us/en/do-it-yourself/galileo-maker-quark-board.html) IoT platforms. It uses the MRAA node module (https://github.com/intel-iot-devkit/mraa) created by the [Intel IoT team](https://github.com/intel-iot-devkit) thank you!
 
 This module currently supports the following Intel IoT hardware:
-- Intel Galileo Gen 1
-- Intel Galileo Gen 2
-- Intel Edison with the Arduino breakout board
+- Intel Edison
+- Intel Galileo (Gen 1/Gen 2)
 
 Want to use Ruby on robots? Check out our sister project Artoo (http://artoo.io)
 
@@ -17,12 +16,45 @@ Want to use the Go programming language to power your robots? Check out our sist
 
 ## How to Install
 
-#### Setting up your Intel Edison
+To install Cylon.js on your Intel Edison, you must be logged into the board, through ssh or the uart serial connection, and execute the following command:
+
+    $ npm install cylon cylon-intel-iot cylon-gpio cylon-i2c mraa
+
+Once `cylon-intel-iot` and friends have been installed, you're ready to start programming!
+
+Please note that you should flash your Intel board with the latest firmware before installing Cylon.js.
+
+## How to Use
+
+### Blinking the built in LED
+```javascript
+var Cylon = require('cylon');
+
+Cylon.robot({
+  connections: {
+    edison: { adaptor: 'intel-iot' }
+  },
+
+  devices: {
+    led: { driver: 'led', pin: 13 }
+  },
+
+  work: function(my) {
+    every((1).second(), my.led.toggle);
+  }
+}).start();
+```
+
+## Setting up your Intel Edison
 
 Everything you need to get started with the Edison is in the Intel Getting Started Guide
 located [here](https://communities.intel.com/docs/DOC-23147). Don't forget to
 configure your Edison's wifi connection and [flash](https://communities.intel.com/docs/DOC-23192)
-your Edison with the latest firmware image!
+your Edison with the latest firmware image (Yocto 3)!
+
+## How to Connect
+
+The [Intel Edison Getting Started Guide](https://communities.intel.com/docs/DOC-23147) details connection instructions for Windows, Mac and Linux.
 
 In order to enable Ethernet over USB on your Edison, follow the appropriate guide for your OS
 
@@ -149,38 +181,6 @@ you must now install the latest version of the
 you simply log into your Intel board, through ssh or the uart serial connection, and follow
 the steps [here](https://github.com/intel-iot-devkit/mraa#installing-on-your-board).
 
-#### Install Cylon.js
-
-Once you have flashed your Intel board with the latest firmware as well as updated MRAA,
-you will now install `cylon-intel-iot`. To do this you must be
-logged into the board, through ssh or the uart serial connection, and execute the
-following command
-
-    $ npm install cylon cylon-intel-iot cylon-gpio cylon-i2c
-
-Once `cylon-intel-iot` and friends have been installed, you're ready to start programming!
-
-## How to Use
-
-### Blinking the built in LED
-```javascript
-var Cylon = require('cylon');
-
-Cylon.robot({
-  connections: {
-    edison: { adaptor: 'intel-iot' }
-  },
-
-  devices: {
-    led: { driver: 'led', pin: 13 }
-  },
-
-  work: function(my) {
-    every((1).second(), my.led.toggle);
-  }
-}).start();
-```
-
 ### Bluetooth Programming on the Intel Edison featuring Sphero
 
 The Edison includes a bluetooth radio right on the board itself, so it's easy to get started programming bluetooth devices out of the box. First we need to enable bluetooth on the Edison.
@@ -224,10 +224,6 @@ Cylon.robot({
   }
 }).start();
 ```
-
-## How to Connect
-
-The [Intel Edison Getting Started Guide](https://communities.intel.com/docs/DOC-23147) details connection instructions for Windows, Mac and Linux.
 
 ## Documentation
 
