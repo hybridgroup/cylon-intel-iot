@@ -63,10 +63,11 @@ opkg update
 
 Thanks to [http://alextgalileo.altervista.org/edison-package-repo-configuration-instructions.html](http://alextgalileo.altervista.org/edison-package-repo-configuration-instructions.html) for the above instructions.
 
-Once you have added the additional package repository, run the following command:
+Once you have added the additional package repository, run the following commands:
 
 ```
 opkg install tar
+touch ~/.profile
 ```
 
 You are now ready to install `nvm` on your Edison. [Follow the nvm installation instructions here](https://github.com/creationix/nvm#install-script).
