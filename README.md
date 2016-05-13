@@ -50,18 +50,26 @@ your Edison with the latest firmware image (Yocto 3)!
 
 ### Updating Node.js on the Intel Edison
 
-The Intel Edison has an older Node.js (0.10.x) installed by default. You can easily update it using [`nvm`](https://github.com/creationix/nvm).
+The Intel Edison has an older Node.js (0.10.x) installed by default. You can easily update it using [Node Version Manager (nvm)](https://github.com/creationix/nvm).
 
-The latest Yocto needs to update the version of the `tar` file decompression utility before you can install new versions of Node.js using `nvm`. You can easily do this as follows. First, add the "unofficial official" package repository, as documented here [http://alextgalileo.altervista.org/edison-package-repo-configuration-instructions.html](http://alextgalileo.altervista.org/edison-package-repo-configuration-instructions.html).
-
-Once you have added the additional package repository, run the following commands:
+The latest Yocto needs to update the version of the `tar` file decompression utility before you can install new versions of Node.js using `nvm`. You can easily do this as follows. First, add the "unofficial official" package repository:
 
 ```
+echo "src/gz all http://repo.opkg.net/edison/repo/all
+src/gz edison http://repo.opkg.net/edison/repo/edison
+src/gz core2-32 http://repo.opkg.net/edison/repo/core2-32" > /etc/opkg/base-feeds.conf
 opkg update
+```
+
+Thanks to [http://alextgalileo.altervista.org/edison-package-repo-configuration-instructions.html](http://alextgalileo.altervista.org/edison-package-repo-configuration-instructions.html) for the above instructions.
+
+Once you have added the additional package repository, run the following command:
+
+```
 opkg install tar
 ```
 
-You are now ready to install `nvm` on your Edison.
+You are now ready to install `nvm` on your Edison. [Follow the nvm installation instructions here](https://github.com/creationix/nvm#install-script).
 
 ## How to Connect
 
