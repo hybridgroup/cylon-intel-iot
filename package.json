@@ -1,7 +1,7 @@
 {
   "name": "cylon-intel-iot",
-  "version": "0.13.1",
-  "description": "Cylon module for Intel-IoT platforms",
+  "version": "0.13.2",
+  "description": "Cylon module for Intel Joule, Edison, and Galileo IoT platforms",
   "homepage": "http://cylonjs.com",
   "bugs": "https://github.com/hybridgroup/cylon-intel-iot/issues",
 
