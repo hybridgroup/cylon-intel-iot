@@ -2,7 +2,7 @@
 
 Cylon.js (http://cylonjs.com) is a JavaScript framework for robotics, physical computing, and the Internet of Things (IoT).
 
-This repository contains the Cylon adaptor for the [Intel Edison](http://www.intel.com/content/www/us/en/do-it-yourself/edison.html) and [Intel Galileo](http://www.intel.com/content/www/us/en/do-it-yourself/galileo-maker-quark-board.html) IoT platforms. It uses the Galileo-io node module (https://github.com/rwaldron/galileo-io/) created by [@rwaldron](https://github.com/rwaldron) thank you!
+This repository contains the Cylon adaptor for the [Intel Joule](http://intel.com/joule/getstarted), [Intel Edison](http://www.intel.com/content/www/us/en/do-it-yourself/edison.html) and [Intel Galileo](http://www.intel.com/content/www/us/en/do-it-yourself/galileo-maker-quark-board.html) IoT platforms. It uses the Galileo-io node module (https://github.com/rwaldron/galileo-io/) created by [@rwaldron](https://github.com/rwaldron) thank you!
 
 Want to use Ruby on robots? Check out our sister project Artoo (http://artoo.io)
 
