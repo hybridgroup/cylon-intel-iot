@@ -2,7 +2,7 @@
 
 Cylon.js (http://cylonjs.com) is a JavaScript framework for robotics, physical computing, and the Internet of Things (IoT).
 
-This repository contains the Cylon adaptor for the [Intel Edison](http://www.intel.com/content/www/us/en/do-it-yourself/edison.html) and [Intel Galileo](http://www.intel.com/content/www/us/en/do-it-yourself/galileo-maker-quark-board.html) IoT platforms. It uses the MRAA node module (https://github.com/intel-iot-devkit/mraa) created by the [Intel IoT team](https://github.com/intel-iot-devkit) thank you!
+This repository contains the Cylon adaptor for the [Intel Edison](http://www.intel.com/content/www/us/en/do-it-yourself/edison.html) and [Intel Galileo](http://www.intel.com/content/www/us/en/do-it-yourself/galileo-maker-quark-board.html) IoT platforms. It uses the Galileo-io node module (https://github.com/rwaldron/galileo-io/) created by [@rwaldron](https://github.com/rwaldron) thank you!
 
 Want to use Ruby on robots? Check out our sister project Artoo (http://artoo.io)
 
@@ -14,7 +14,7 @@ Want to use the Go programming language to power your robots? Check out our sist
 
 To install Cylon.js on your Intel Edison, you must be logged into the board, through ssh or the uart serial connection, and execute the following command:
 
-    $ npm install cylon cylon-intel-iot cylon-gpio cylon-i2c mraa
+    $ npm install cylon cylon-intel-iot cylon-gpio cylon-i2c
 
 Once `cylon-intel-iot` and friends have been installed, you're ready to start programming!
 
