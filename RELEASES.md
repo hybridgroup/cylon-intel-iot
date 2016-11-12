@@ -1,5 +1,7 @@
 ## Release History
 
+Version 0.13.0 - Switch to using Galileo-io
+
 Version 0.12.0 - Remove UPM drivers to reduce binary dependencies
 
 Version 0.11.0 - Add UPM PPD42NS driver
